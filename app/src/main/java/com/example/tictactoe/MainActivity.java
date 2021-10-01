@@ -1,7 +1,9 @@
 package com.example.tictactoe;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Message;
 import android.text.Html;
@@ -19,14 +21,23 @@ public class MainActivity extends AppCompatActivity {
     public void playAgain(View view){
 
         Button play = findViewById(R.id.button);
-        Button cancel = findViewById(R.id.button2);
+        Button cancel1 = findViewById(R.id.button2);
         play.setVisibility(View.INVISIBLE);
-        cancel.setVisibility(View.INVISIBLE);
-        GridLayout gl = findViewById(R.id.gridLayout);
-        for(int i = 0; i < gl.getChildCount(); i++) {
-            ImageView posi = (ImageView) gl.getChildAt(i);
-            posi.setImageDrawable(null);
-        }
+        cancel1.setVisibility(View.INVISIBLE);
+//        GridLayout gridLayout = findViewById(R.id.gridLayout);
+//        for(int i = 0; i < gridLayout.getChildCount(); i++) {
+//            ImageView posi = (ImageView) gl.getChildAt(i);
+//            posi.setImageDrawable(null);
+//        }
+        ((ImageView)findViewById(R.id.imageView)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView1)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView2)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView3)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView4)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView5)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView6)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView7)).setImageDrawable(null);
+        ((ImageView)findViewById(R.id.imageView8)).setImageDrawable(null);
         int activePlayer = 0;
         for(int i = 0;i<setPosition.length;i++) {
             setPosition[i] = 2;
@@ -34,7 +45,10 @@ public class MainActivity extends AppCompatActivity {
         gameActive = true;
     }
 
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void closeApp(View view){
+        finishAndRemoveTask();
+    }
     public void position(View view){
         ImageView posi = (ImageView) view;
 
